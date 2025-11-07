@@ -1,0 +1,81 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Finch Event (Pseudonymized) v1",
+    "type": "object",
+    "properties": {
+      "eventTime": { 
+        "type": "string", 
+        "format": "date-time",
+        "description": "Timestamp when the event was captured (UTC, RFC3339 format)."
+      },
+  
+      "srcIP_prefix": { 
+        "type": ["string","null"], 
+        "description": "Network prefix of the source IP (e.g. '192.168.0.0/24' or '2001:db8::/48')."
+      },
+      "srcIP_hash":   { 
+        "type": ["string","null"], 
+        "description": "HMAC-SHA256 hash (12 hex chars) of the original source IP, stable per IP using a private salt."
+      },
+      "srcASN":       { "type": ["integer","null"], "description": "Autonomous System Number (from MaxMind GeoLite2-ASN)." },
+      "srcASNOrg":    { "type": ["string","null"], "description": "Autonomous System Organization name." },
+      "srcCountry":   { "type": ["string","null"], "description": "Country ISO code of the source IP (from MaxMind GeoLite2-City)." },
+      "srcPort":      { "type": ["integer","null"], "description": "Source port used by the client connection." },
+  
+      "dstIP":        { "type": ["string","null"], "description": "Destination IP of the honeypot listener." },
+      "dstPort":      { "type": ["integer","null"], "description": "Destination port of the honeypot listener." },
+      "listenerAddr": { "type": ["string","null"], "description": "Listener socket address (e.g. 0.0.0.0:8443)." },
+      "upstream":     { "type": ["string","null"], "description": "Upstream target URL used for proxying (if applicable)." },
+  
+      "method":          { "type": ["string","null"], "description": "HTTP request method (e.g. GET, POST, PUT)." },
+      "request":         { "type": ["string","null"], "description": "HTTP request path or URI requested by the client." },
+      "protocolVersion": { "type": ["string","null"], "description": "HTTP protocol version string (e.g. HTTP/1.1 or HTTP/2.0)." },
+      "headers": {
+        "type": ["object","null"],
+        "description": "HTTP headers as key-value pairs (Go map[string]string). Values are strings; header names are arbitrary.",
+        "additionalProperties": { "type": "string" }
+      },
+      "body":       { "type": ["string","null"], "description": "Raw HTTP request body (may contain exploit or injection payloads)." },
+      "bodySha256": { "type": ["string","null"], "description": "SHA-256 hash of the raw request body." },
+      "userAgent":  { "type": ["string","null"], "description": "User-Agent string extracted from headers (duplicated for convenience)." },
+  
+      "ja3": { 
+        "type": ["string","null"], 
+        "description": "JA3 TLS ClientHello fingerprint (MD5 of TLS version, cipher suites, extensions, elliptic curves, and EC point formats)."
+      },
+      "ja3Raw": { 
+        "type": ["string","null"], 
+        "description": "Raw JA3 string used to compute the JA3 hash (comma-separated TLS ClientHello parameters)."
+      },
+      "ja4": { 
+        "type": ["string","null"], 
+        "description": "JA4 TLS fingerprint (successor to JA3; https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4.md)."
+      },
+      "ja4h": { 
+        "type": ["string","null"], 
+        "description": "JA4H HTTP Client Fingerprint (https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4H.md)."
+      },
+      "http2": { 
+        "type": ["string","null"], 
+        "description": "Akamai HTTP/2 fingerprint string describing SETTINGS and frame parameters (e.g. '3:100;4:65536;2:0|1048510465|0|m,s,a,p')."
+      },
+  
+      "ruleID": { "type": ["string","null"], "description": "Finch rule ID that matched the request (e.g. 'default' or custom rule)." },
+      "action": { "type": ["string","null"], "description": "Finch rule action applied (e.g. 'allow', 'deny', 'deceive')." },
+  
+      "suricataMatches": {
+        "type": ["array","null"],
+        "description": "List of Suricata detection rule matches for this request.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "msg": { "type": ["string","null"], "description": "Suricata rule message." },
+            "sid": { "type": ["string","null"], "description": "Suricata rule SID identifier." }
+          },
+          "required": ["msg","sid"]
+        }
+      }
+    },
+    "required": ["eventTime","bodySha256"]
+  }
+  
