@@ -1,6 +1,9 @@
-# Honeypot Datasets
+# Honeypot Datasets & Reports
 
-Public datasets collected from Internet-facing honeypots.
+Public datasets and observation reports collected from Internet-facing honeypots.
 
-## Available Dataset
-- *2025-07-31 → 2025-11-01* — Finch Reverse Proxy: See the [dataset card](datasets/finch_20250731-20251101/DATASET_CARD.md) for details.
+## Available Datasets
+- *2025-07-31 → 2025-11-01* — Finch Reverse Proxy: See the [dataset card](datasets/finch_20250731-20251101/DATASET_CARD.md) for details (source IPs are pseudonymized).
+
+## Observation Reports
+- *2026-10-22 → 2026-10-24* — PHP2Shell Exploitation ([initial exploitation attempts](reports/php2shell/2026-10-22-to-24-initial-attempts.md) and [confirmed packet-to-process RCE](reports/php2shell/2026-10-24-confirmed-rce.md)). Unlike the Finch dataset above, these reports intentionally retain unredacted source IPs as indicators.
