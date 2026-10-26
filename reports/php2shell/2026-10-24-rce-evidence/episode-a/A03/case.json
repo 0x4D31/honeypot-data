@@ -1,0 +1,38 @@
+{
+  "apacheParentPid": 401765,
+  "captureTransformCounts": {
+    "honeypotIpSubstitutions": 13,
+    "leakedCookieBytesMasked": 3342766,
+    "leakedCookieValuesMasked": 2,
+    "pageHtmlBytesReplaced": 2084
+  },
+  "caseId": "A03",
+  "derivedCapturePacketCount": 11169,
+  "derivedCaptureSha256": "dfab4976ea9c67b887dea2a728124645e5f9e32a4c4c1ea0ca9743638e219d0e",
+  "episode": "A",
+  "executionSourcePort": 35608,
+  "originalExecutionBodySha256": "e538361aa02f01bb9e00f53d2107eb1369f778203033e08506496a767c0e4abc",
+  "originalPriorDecodedLeakSha256": "1265b430c8082ffbdff126ed105e9dc0aa44e8bbf7761e854d769141e64c73e5",
+  "originalSourceCaptureSha256": [
+    "1c8a66969921abdd3a9c3479497f47a9be650fd2d65d21084617826cd3a8808c",
+    "4f26b47dabd2e3acad69d272605022549439109516346158229c36cbd2c67609",
+    "85d875734149aa1fae6e56c479d9bdfd54879993b8af0ab2d3b69e08fb3c9093",
+    "9d82035e5a4f8183233d0d0960fa9f33bb83fd2119286f9c1960ec2f1a26222e",
+    "ceaa33295861bdee0968e3ca77238ae5b631e457cf645905100426b8db18c292",
+    "e36dc092f5663537586bab2eed1b50c58f91fef187436479b492a40404359bdd",
+    "f8565ad8dce9d8ad669f9303076644979d02a5fe147136a5cc1d69c00a2c2adc"
+  ],
+  "recordCounts": {
+    "apacheErrors": 5,
+    "phpErrors": 15,
+    "segmentStderr": 6,
+    "tetragon": 6,
+    "web": 8
+  },
+  "redactedWebCookies": 2,
+  "shellPid": 401766,
+  "shellRef": "us-east-1/raw/sensor-us-east-1/run-7119a199a4c51982715f809a/seg-20261024T160630Z-000560.ready/tetragon/events.jsonl:29",
+  "shellTime": "2026-10-24T16:04:26.482316955Z",
+  "sourceIp": "15.204.59.70",
+  "targetAlias": "T1"
+}

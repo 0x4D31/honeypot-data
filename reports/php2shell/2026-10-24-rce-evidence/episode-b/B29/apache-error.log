@@ -1,0 +1,4 @@
+[Sat Oct 24 18:46:05.185385 2026] [core:notice] [pid 1:tid 1] AH00051: child pid 31 exit signal Segmentation fault (11), possible coredump in /etc/apache2
+[Sat Oct 24 18:46:09.191221 2026] [core:notice] [pid 1:tid 1] AH00051: child pid 34 exit signal Segmentation fault (11), possible coredump in /etc/apache2
+[Sat Oct 24 18:46:21.206857 2026] [core:notice] [pid 1:tid 1] AH00051: child pid 35 exit signal Segmentation fault (11), possible coredump in /etc/apache2
+[Sat Oct 24 18:46:25.212739 2026] [core:notice] [pid 1:tid 1] AH00051: child pid 38 exit signal Segmentation fault (11), possible coredump in /etc/apache2

@@ -1,0 +1,1 @@
+[Sat Oct 24 18:43:26.012483 2026] [core:notice] [pid 1:tid 1] AH00051: child pid 25 exit signal Abort (6), possible coredump in /etc/apache2

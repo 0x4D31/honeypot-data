@@ -1,0 +1,60 @@
+{
+  "counts": {
+    "httpNative": 9,
+    "httpProxied": 0,
+    "httpsFinished": 0,
+    "httpsStarted": 0,
+    "pcapFiles": 12,
+    "phpErrorLines": 16,
+    "tetragonEvents": 30
+  },
+  "endedAt": "2026-10-24T16:06:30.521185931Z",
+  "eventId": "sensor-us-east-1/run-7119a199a4c51982715f809a/seg-20261024T160630Z-000560",
+  "eventType": "segment_signals",
+  "findings": [
+    {
+      "code": "oversized_response_cookie",
+      "count": 2,
+      "evidence": "apache-native/access.jsonl:3",
+      "level": "high",
+      "target": "apache-native"
+    },
+    {
+      "code": "php_sensitive_file_operation",
+      "count": 3,
+      "evidence": "tetragon/events.jsonl:1",
+      "level": "investigate",
+      "target": "runtime"
+    },
+    {
+      "code": "php_spawned_process",
+      "count": 2,
+      "evidence": "tetragon/events.jsonl:12",
+      "level": "high",
+      "target": "runtime"
+    },
+    {
+      "code": "php_worker_crash",
+      "count": 5,
+      "evidence": "apache-native/apache-error.log:1",
+      "level": "high",
+      "target": "apache-native"
+    },
+    {
+      "code": "pre_script_memory_exhaustion",
+      "count": 7,
+      "evidence": "apache-native/php-error.log:1",
+      "level": "high",
+      "target": "apache-native"
+    }
+  ],
+  "highestLevel": "high",
+  "manifestSha256": "56f7db1437d9d884fa0d4b4110663783fd83ad96d2a06ca52b8f182b719d5056",
+  "nodeId": "sensor-us-east-1",
+  "profileId": "modphp-84-1w",
+  "runId": "run-7119a199a4c51982715f809a",
+  "schemaVersion": 1,
+  "segmentId": "seg-20261024T160630Z-000560",
+  "sequence": 560,
+  "startedAt": "2026-10-24T16:01:30.521185351Z"
+}

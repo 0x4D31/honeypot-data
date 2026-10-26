@@ -1,0 +1,34 @@
+{
+  "apacheParentPid": 794305,
+  "captureTransformCounts": {
+    "honeypotIpSubstitutions": 5,
+    "leakedCookieBytesMasked": 1653604,
+    "leakedCookieValuesMasked": 1,
+    "pageHtmlBytesReplaced": 1344
+  },
+  "caseId": "B18",
+  "derivedCapturePacketCount": 4116,
+  "derivedCaptureSha256": "695c6ac1e827a3ca7556a1fc45ffbdf4c7e4cc981eee3144b66d50f13590960b",
+  "episode": "B",
+  "executionSourcePort": 55942,
+  "originalExecutionBodySha256": "b8e69e39c49c986a6edae77f08b11be1ab1675d4fda6c05dcf0628149eefbd06",
+  "originalPriorDecodedLeakSha256": "73ea9981c769a787ad02c4e942f7c0972dc5bcbe25b743c910c5c03d51e1d6d1",
+  "originalSourceCaptureSha256": [
+    "2aad510d20f68eab5237b5b483884abbaf5ad7ed97dcc1ef7752dc30a3d78e18",
+    "63ea8508e291ec71f23842d4bcebc6a270697c49849a5fb5ffd31944a4233c5a",
+    "c1373903b58847af41be9b3001a037331bce59288b5be16f63df2f5388f9fcd8"
+  ],
+  "recordCounts": {
+    "apacheErrors": 2,
+    "phpErrors": 6,
+    "segmentStderr": 0,
+    "tetragon": 9,
+    "web": 4
+  },
+  "redactedWebCookies": 1,
+  "shellPid": 794306,
+  "shellRef": "eu-west-1/raw/sensor-eu-west-1/run-2b0ed7d0c1bf3937d6079af0/seg-20261024T181341Z-000556.ready/tetragon/events.jsonl:16",
+  "shellTime": "2026-10-24T18:10:45.950809614Z",
+  "sourceIp": "162.35.99.94",
+  "targetAlias": "T3"
+}

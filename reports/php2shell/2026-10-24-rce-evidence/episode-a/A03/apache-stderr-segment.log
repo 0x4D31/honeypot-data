@@ -1,0 +1,6 @@
+sh: 1: cannot create /var/www/html/p1: Read-only file system
+sh: 1: cannot create /var/www/p1: Read-only file system
+sh: 1: wget: not found
+sh: 1: cannot create /var/www/html/p1: Read-only file system
+sh: 1: cannot create /var/www/p1: Read-only file system
+sh: 1: wget: not found

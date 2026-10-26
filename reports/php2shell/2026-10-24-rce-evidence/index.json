@@ -1,0 +1,249 @@
+{
+  "cases": [
+    {
+      "caseId": "A01",
+      "episode": "A",
+      "path": "episode-a/A01/case.json",
+      "sourceIp": "15.204.59.70",
+      "targetAlias": "T1"
+    },
+    {
+      "caseId": "A02",
+      "episode": "A",
+      "path": "episode-a/A02/case.json",
+      "sourceIp": "15.204.59.70",
+      "targetAlias": "T1"
+    },
+    {
+      "caseId": "A03",
+      "episode": "A",
+      "path": "episode-a/A03/case.json",
+      "sourceIp": "15.204.59.70",
+      "targetAlias": "T1"
+    },
+    {
+      "caseId": "B01",
+      "episode": "B",
+      "path": "episode-b/B01/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B02",
+      "episode": "B",
+      "path": "episode-b/B02/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B03",
+      "episode": "B",
+      "path": "episode-b/B03/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B04",
+      "episode": "B",
+      "path": "episode-b/B04/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B05",
+      "episode": "B",
+      "path": "episode-b/B05/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B06",
+      "episode": "B",
+      "path": "episode-b/B06/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B07",
+      "episode": "B",
+      "path": "episode-b/B07/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B08",
+      "episode": "B",
+      "path": "episode-b/B08/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B09",
+      "episode": "B",
+      "path": "episode-b/B09/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B10",
+      "episode": "B",
+      "path": "episode-b/B10/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B11",
+      "episode": "B",
+      "path": "episode-b/B11/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B12",
+      "episode": "B",
+      "path": "episode-b/B12/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T3"
+    },
+    {
+      "caseId": "B13",
+      "episode": "B",
+      "path": "episode-b/B13/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B14",
+      "episode": "B",
+      "path": "episode-b/B14/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B15",
+      "episode": "B",
+      "path": "episode-b/B15/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B16",
+      "episode": "B",
+      "path": "episode-b/B16/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T3"
+    },
+    {
+      "caseId": "B17",
+      "episode": "B",
+      "path": "episode-b/B17/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T3"
+    },
+    {
+      "caseId": "B18",
+      "episode": "B",
+      "path": "episode-b/B18/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T3"
+    },
+    {
+      "caseId": "B19",
+      "episode": "B",
+      "path": "episode-b/B19/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T3"
+    },
+    {
+      "caseId": "B20",
+      "episode": "B",
+      "path": "episode-b/B20/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T3"
+    },
+    {
+      "caseId": "B21",
+      "episode": "B",
+      "path": "episode-b/B21/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T3"
+    },
+    {
+      "caseId": "B22",
+      "episode": "B",
+      "path": "episode-b/B22/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T3"
+    },
+    {
+      "caseId": "B23",
+      "episode": "B",
+      "path": "episode-b/B23/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B24",
+      "episode": "B",
+      "path": "episode-b/B24/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B25",
+      "episode": "B",
+      "path": "episode-b/B25/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T3"
+    },
+    {
+      "caseId": "B26",
+      "episode": "B",
+      "path": "episode-b/B26/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B27",
+      "episode": "B",
+      "path": "episode-b/B27/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T3"
+    },
+    {
+      "caseId": "B28",
+      "episode": "B",
+      "path": "episode-b/B28/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B29",
+      "episode": "B",
+      "path": "episode-b/B29/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T2"
+    },
+    {
+      "caseId": "B30",
+      "episode": "B",
+      "path": "episode-b/B30/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T1"
+    },
+    {
+      "caseId": "B31",
+      "episode": "B",
+      "path": "episode-b/B31/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T1"
+    },
+    {
+      "caseId": "B32",
+      "episode": "B",
+      "path": "episode-b/B32/case.json",
+      "sourceIp": "162.35.99.94",
+      "targetAlias": "T1"
+    }
+  ]
+}

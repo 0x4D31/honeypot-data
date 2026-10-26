@@ -1,0 +1,53 @@
+{
+  "counts": {
+    "httpNative": 4,
+    "httpProxied": 0,
+    "httpsFinished": 0,
+    "httpsStarted": 0,
+    "pcapFiles": 7,
+    "phpErrorLines": 6,
+    "tetragonEvents": 13
+  },
+  "endedAt": "2026-10-24T17:23:41.553561276Z",
+  "eventId": "sensor-ap-northeast-1/run-1723b2a72f61465c4780807c/seg-20261024T172341Z-000546",
+  "eventType": "segment_signals",
+  "findings": [
+    {
+      "code": "oversized_response_cookie",
+      "count": 1,
+      "evidence": "apache-native/access.jsonl:3",
+      "level": "high",
+      "target": "apache-native"
+    },
+    {
+      "code": "php_sensitive_file_operation",
+      "count": 2,
+      "evidence": "tetragon/events.jsonl:1",
+      "level": "investigate",
+      "target": "runtime"
+    },
+    {
+      "code": "php_spawned_process",
+      "count": 1,
+      "evidence": "tetragon/events.jsonl:12",
+      "level": "high",
+      "target": "runtime"
+    },
+    {
+      "code": "pre_script_memory_exhaustion",
+      "count": 3,
+      "evidence": "apache-native/php-error.log:1",
+      "level": "high",
+      "target": "apache-native"
+    }
+  ],
+  "highestLevel": "high",
+  "manifestSha256": "773ad5a92de485cb57cf2495711f28f36f088f766241817d37ddf81282fe6f0e",
+  "nodeId": "sensor-ap-northeast-1",
+  "profileId": "modphp-84-1w",
+  "runId": "run-1723b2a72f61465c4780807c",
+  "schemaVersion": 1,
+  "segmentId": "seg-20261024T172341Z-000546",
+  "sequence": 546,
+  "startedAt": "2026-10-24T17:18:41.553561416Z"
+}
