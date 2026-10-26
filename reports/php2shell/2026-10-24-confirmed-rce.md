@@ -2,6 +2,8 @@
 
 **24 October 2026 · UTC · evidence acquired through 19:26–19:31 across six sensors**
 
+**Case evidence dataset:** Per-case HTTP packet captures and selected Apache, PHP, Tetragon, and signal records for all 35 confirmed shells (`A01`–`A03`, `B01`–`B32`) are published in [`2026-10-24-rce-evidence/`](2026-10-24-rce-evidence/README.md).
+
 ## Technical summary
 
 Target-side packet captures and Tetragon process events correlate **35 complete execution-stage HTTP POSTs with 35 `/bin/sh` starts directly parented by Apache workers** (`uid=33`) across three PHP targets. Three shell events followed traffic from `15.204.59.70` on T1; 32 followed traffic from `162.35.99.94` on T1, T2, and T3. These are two source-address clusters, not an attribution to two actors.
@@ -149,7 +151,7 @@ T3 18:08:20.116  tcp_connect   /usr/bin/curl → 162.35.99.94:80
 
 ## Complete case index: 35 confirmed shell events
 
-Every row below has a complete 451,384-B B2 request in target-side PCAP immediately before a Tetragon `/bin/sh` `process_exec` with `parent.binary=/usr/sbin/apache2` and `uid=33`. `B2 port` is the **attacker's TCP source port**. `Event ref` identifies the target alias, sealed-segment sequence, and line of its Tetragon JSONL; it does not expose a target address. A source port and time identify the matching PCAP flow. Command descriptions summarize the observed process arguments, not hypothetical intent.
+Every row below has a complete 451,384-B B2 request in target-side PCAP immediately before a Tetragon `/bin/sh` `process_exec` with `parent.binary=/usr/sbin/apache2` and `uid=33` (released per case under [`2026-10-24-rce-evidence/`](2026-10-24-rce-evidence/README.md)). `B2 port` is the **attacker's TCP source port**. `Event ref` identifies the target alias, sealed-segment sequence, and line of its Tetragon JSONL; it does not expose a target address. A source port and time identify the matching PCAP flow. Command descriptions summarize the observed process arguments, not hypothetical intent.
 
 ### Episode A: three shells on T1
 
